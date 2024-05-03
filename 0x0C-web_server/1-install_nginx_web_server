@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+<<<<<<< HEAD
 
 # Update package lists and install Nginx
 apt-get update -y -qq
@@ -15,3 +16,19 @@ echo "Hello World!" > /var/www/html/index.html
 
 # End of script
 
+=======
+# Update package lists and install Nginx
+apt-get update -y -qq
+apt-get install nginx -y
+
+# Make sure Nginx is listening on port 80
+sed -i '/listen \[::\]:80 default_server;/s/^#//g' /etc/nginx/sites-available/default
+
+# Restart Nginx (since systemctl is not allowed)
+service nginx restart
+
+# Create a default HTML page with "Hello World!"
+echo "Hello World!" > /var/www/html/index.html
+
+# End of script
+>>>>>>> 147b1c1800095606e3e7a85e9f600ad6bd385b41
